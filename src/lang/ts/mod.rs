@@ -172,7 +172,7 @@ fn datatype_inner(ctx: ExportContext, typ: &DataType) -> Result<String, TsExport
 
             format!(
                 // We use this isn't of `Record<K, V>` to avoid issues with circular references.
-                "{{ [key{divider} {}]: {} }}",
+                "Record<{},{}>",
                 datatype_inner(ctx.clone(), &def.0)?,
                 datatype_inner(ctx, &def.1)?
             )
